@@ -23,6 +23,7 @@ public class Buracos : MonoBehaviour
     void Start()
     {
         ContaPeca = chao.Length;
+        //CIDIGUEI
     }
 
 
