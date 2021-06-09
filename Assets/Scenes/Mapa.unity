@@ -8942,36 +8942,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564808539}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &566615334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 566615335}
-  m_Layer: 0
-  m_Name: SpawnBomb
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &566615335
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566615334}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.158, y: -0.143, z: 0.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1379842141}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &567524593
 GameObject:
   m_ObjectHideFlags: 0
@@ -20429,31 +20399,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735371029}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &745972907 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7414921389562709037, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-  m_PrefabInstance: {fileID: 1881156749}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &745972910 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 7414921389562709046, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-  m_PrefabInstance: {fileID: 1881156749}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &745972914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745972907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5d5332c1e282d4a9b192464f48e52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cor: {fileID: 2100000, guid: 13cca40747eff6145bc2c1600c9bde91, type: 2}
-  rdb: {fileID: 745972910}
-  cont: 0
 --- !u!1 &749751417
 GameObject:
   m_ObjectHideFlags: 0
@@ -32442,14 +32387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2724658167887619892, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 6338088253930606866, guid: 1905c74b9a15f5e43ac42c7d3342ed90, type: 3}
-    - target: {fileID: 2724658167887619892, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: vcam
-      value: 
-      objectReference: {fileID: 5913214891962391143, guid: 45f9eff77380d7a41baeb0c952bceb31, type: 3}
     - target: {fileID: 7414921389562709033, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -32499,25 +32436,9 @@ PrefabInstance:
       value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 7414921389562709037, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7414921389562709047, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: cor
-      value: 
-      objectReference: {fileID: 2100000, guid: 13cca40747eff6145bc2c1600c9bde91, type: 2}
-    - target: {fileID: 7414921389562709047, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: bomba
-      value: 
-      objectReference: {fileID: 6562473198615918175, guid: a7f60487922c89a42a8c71d10402077b, type: 3}
-    - target: {fileID: 7414921389562709047, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: forcaPulo
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414921389562709047, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
-      propertyPath: spawnBomb
-      value: 
-      objectReference: {fileID: 566615335}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8663d48b8e2b0c4aa104bcc505c12d1, type: 3}
 --- !u!1 &1893635217

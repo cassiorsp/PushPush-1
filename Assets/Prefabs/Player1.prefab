@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4600695344574530162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3200427516904300945}
+  m_Layer: 0
+  m_Name: SpawnBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3200427516904300945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600695344574530162}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.158, y: -0.143, z: 0.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7414921389562709033}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &7414921389562709037
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +45,7 @@ GameObject:
   - component: {fileID: 7414921389562709046}
   - component: {fileID: 7414921389562709047}
   - component: {fileID: 2724658167887619892}
+  - component: {fileID: 745972914}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -32,7 +63,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3200427516904300945}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,9 +158,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677b54a987f4c874dbb08ea7bf2ff6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnBomb: {fileID: 3200427516904300945}
+  bomba: {fileID: 6562473198615918175, guid: a7f60487922c89a42a8c71d10402077b, type: 3}
   speed: 5
   "for\xE7aImpulso": 1.5
   impulse: 0
+  isGround: 0
+  limiteGrowUp: 0
+  forcaPulo: 300
+  limitePowerUpSpeed: 0
+  contbomba: 0
 --- !u!114 &2724658167887619892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,5 +180,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba0349dd335bb7499409b77e937b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vcam: {fileID: 7040782119881999569, guid: 45f9eff77380d7a41baeb0c952bceb31, type: 3}
+  vcam: {fileID: 5913214891962391143, guid: 45f9eff77380d7a41baeb0c952bceb31, type: 3}
   cam: {fileID: 6338088253930606866, guid: 1905c74b9a15f5e43ac42c7d3342ed90, type: 3}
+--- !u!114 &745972914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414921389562709037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5d5332c1e282d4a9b192464f48e52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cor: {fileID: 2100000, guid: 13cca40747eff6145bc2c1600c9bde91, type: 2}
+  rdb: {fileID: 7414921389562709046}
+  cont: 0
