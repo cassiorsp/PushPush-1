@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Move : MonoBehaviour
 {
+    private PhotonView _photonView;
+    
+
     [SerializeField] private Transform spawnBomb;
     [SerializeField] private GameObject bomba;
     private Rigidbody rdb;
@@ -16,46 +20,52 @@ public class Move : MonoBehaviour
     public int limitePowerUpSpeed;
     public int contbomba;
 
-    //public static Transform _transform;
+    public static Transform _transform;
 
     void Start()
     {
+        _photonView = GetComponent<PhotonView>();
         contbomba = 0;
         rdb = GetComponent<Rigidbody>();
         forçaImpulso = 2;
         limiteGrowUp = 0;
         limitePowerUpSpeed = 0;
-        //if(photonView.IsMine)
-        //{
-        //    _transform = transform;
-        //}
+
+        if(_photonView.IsMine)
+        {
+            _transform = transform;
+        }
     }
 
 
     void Update()
     {
-        Mover();
-        if (transform.position.y < 0.5)
+        if(_photonView.IsMine)
         {
-            rdb.mass = 20;
-        }
-        if (Input.GetKey(KeyCode.Space) && isGround)
-        {
-            rdb.AddForce(transform.up * forcaPulo);
-            isGround = false;
-        }
+            Mover();
+            if (transform.position.y < 0.5)
+            {
+                rdb.mass = 20;
+            }
+            if (Input.GetKey(KeyCode.Space) && isGround)
+            {
+                rdb.AddForce(transform.up * forcaPulo);
+                isGround = false;
+            }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Impulso();
-            StartCoroutine("VerBol");
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Impulso();
+                StartCoroutine("VerBol");
 
+            }
+            if (Input.GetButtonDown("Fire2") && contbomba > 0)
+            {
+                Tiro();
+                contbomba--;
+            }
         }
-        if (Input.GetButtonDown("Fire2") && contbomba > 0)
-        {
-            Tiro();
-            contbomba--;
-        }
+        
 
     }
 
@@ -105,6 +115,7 @@ public class Move : MonoBehaviour
         }
 
     }
+    [PunRPC]
     public void Tiro()
     {
         Instantiate(bomba, spawnBomb.transform.position, transform.rotation);

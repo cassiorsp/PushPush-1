@@ -20,7 +20,7 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     public static PhotonConnection _photonConnect;
     public void Awake()
     {
-        if(_photonConnect == null)
+        if (_photonConnect == null)
         {
             _photonConnect = this;
             DontDestroyOnLoad(this.gameObject);
@@ -31,7 +31,7 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
         }
     }
 
-    public int ID;
+    public int ID = 0;
 
     private void Start()
     {
@@ -57,14 +57,18 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         _panelLogin.SetActive(false);
         _panelSala.SetActive(true);
+        ID++;
+        Debug.Log(ID.ToString());
     }
     public void CreatRoom()
     {
-        PhotonNetwork.JoinOrCreateRoom(_nomeSala, new RoomOptions(), TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom("Sala1", new RoomOptions(), TypedLobby.Default);
+       
     }
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby");
+        
     }
 
     public override void OnConnectedToMaster()
@@ -87,15 +91,17 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
         print(PhotonNetwork.NickName);
         _nickName.text = PhotonNetwork.NickName;
 
-        //PhotonNetwork.Instantiate(_Player[ID].name, new Vector3(0, 5, -6), Quaternion.identity);
+        //PhotonNetwork.Instantiate(_player[ID].name, new Vector3(0, 5, 0), Quaternion.identity);
+
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.LoadLevel(1);
         }
     }
-    public void SelectPlayer(int id)
-    {
 
-        ID = id;
-    }
+    //public void SelectPlayer(int id)
+    //{
+
+    //    ID = id;
+    //}
 }
