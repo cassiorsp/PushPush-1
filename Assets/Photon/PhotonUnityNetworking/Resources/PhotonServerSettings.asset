@@ -39,6 +39,15 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - Tiro
+  - GrowUp
+  - Impulso
+  - Mover
+  - OnCollisionEnter
+  - Explode
+  - cai
+  - ChaoCounter
+  - Start
+  - Update
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

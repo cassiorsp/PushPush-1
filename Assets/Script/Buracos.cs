@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Buracos : MonoBehaviour
 {
@@ -19,14 +21,13 @@ public class Buracos : MonoBehaviour
     [SerializeField]
     private int ContaPeca;
 
-
+    [PunRPC]
     void Start()
     {
         ContaPeca = chao.Length;
-        //CIDIGUEI
     }
 
-
+    [PunRPC]
     void Update()
     {
         ChaoCounter();
@@ -38,10 +39,10 @@ public class Buracos : MonoBehaviour
             StartCoroutine(cai());
             fallTime = 0;
         }
-        else if(ContaPeca == 1)
-        {
-            StartCoroutine(CaiParede());
-        }
+        //else if(ContaPeca == 1)
+        //{
+        //    StartCoroutine(CaiParede());
+        //}
         else if (fallTime >= 5.5f && chao == null)
         {
             sort = Random.Range(0, parede.Length);
@@ -62,7 +63,7 @@ public class Buracos : MonoBehaviour
         //}
 
     }
-
+    [PunRPC]
     void ChaoCounter()
     {
         if (ContaPeca == 0)
@@ -70,7 +71,7 @@ public class Buracos : MonoBehaviour
             chao = null;
         }
     }
-
+    [PunRPC]
     public IEnumerator cai()
     {
         if (chao != null)
@@ -123,24 +124,24 @@ public class Buracos : MonoBehaviour
             Destroy(parede[sort].gameObject);
         }
     }
-   public IEnumerator CaiParede()
-    {
-        for (int tet = 0; tet == bordas.Length; tet++)
-        {
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
-            yield return new WaitForSeconds(0.5f);
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.white;
-            yield return new WaitForSeconds(0.5f);
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
-            yield return new WaitForSeconds(0.5f);
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.white;
-            yield return new WaitForSeconds(0.5f);
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
-            yield return new WaitForSeconds(0.5f);
-            bordas[tet].GetComponent<MeshRenderer>().material.color = Color.blue;
-            yield return new WaitForSeconds(0.5f);
-            rdb[sort].isKinematic = false;
-            rdb[sort].constraints = RigidbodyConstraints.None;
-        }
-    }
+   //public IEnumerator CaiParede()
+   // {
+   //     for (int tet = 0; tet == bordas.Length; tet++)
+   //     {
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
+   //         yield return new WaitForSeconds(0.5f);
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.white;
+   //         yield return new WaitForSeconds(0.5f);
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
+   //         yield return new WaitForSeconds(0.5f);
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.white;
+   //         yield return new WaitForSeconds(0.5f);
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.red;
+   //         yield return new WaitForSeconds(0.5f);
+   //         bordas[tet].GetComponent<MeshRenderer>().material.color = Color.blue;
+   //         yield return new WaitForSeconds(0.5f);
+   //         rdb[sort].isKinematic = false;
+   //         rdb[sort].constraints = RigidbodyConstraints.None;
+   //     }
+   // }
 }

@@ -13,7 +13,7 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     private InputField _nomeJogador;
     [SerializeField]
     private Text _nickName;
-    private string _nomeSala;
+    //private string _nomeSala;
 
     public GameObject[] _player;
 
@@ -35,18 +35,18 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        _nomeSala = "Sala1";
+        //_nomeSala = "Sala1";
         PhotonNetwork.AutomaticallySyncScene = true;
         _panelLogin.SetActive(true);
         _panelSala.SetActive(false);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             print("Quantidade de jogadores :" + PhotonNetwork.CurrentRoom.PlayerCount);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             PhotonNetwork.ConnectUsingSettings();
         }
@@ -63,18 +63,19 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     public void CreatRoom()
     {
         PhotonNetwork.JoinOrCreateRoom("Sala1", new RoomOptions(), TypedLobby.Default);
-       
+
     }
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby");
-        
+
     }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("Conectado");
         PhotonNetwork.JoinLobby();
+        ID++;
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -99,9 +100,4 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
         }
     }
 
-    //public void SelectPlayer(int id)
-    //{
-
-    //    ID = id;
-    //}
 }
