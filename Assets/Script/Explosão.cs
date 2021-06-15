@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 
 
@@ -11,20 +13,23 @@ public class Explosão : MonoBehaviour
     public float explosionRadius;
     public GameObject Bolinha2;
     public GameObject Bolinha;
-    void Start()
-    {
-        
-    }
+    //void Start()
+    //{
 
-    void Update()
-    {
-       
-    }
+    //}
+
+    //void Update()
+    //{
+
+    //}
+
+    [PunRPC]
     private void OnCollisionEnter()
     {
         Explode();
     }
 
+    [PunRPC]
     void Explode()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);

@@ -27,6 +27,7 @@ public class Move : MonoBehaviour
         _photonView = GetComponent<PhotonView>();
         contbomba = 0;
         rdb = GetComponent<Rigidbody>();
+        _transform = GetComponent<Transform>();
         forçaImpulso = 2;
         limiteGrowUp = 0;
         limitePowerUpSpeed = 0;
@@ -68,24 +69,30 @@ public class Move : MonoBehaviour
         
 
     }
-
+    [PunRPC]
     public void Mover()
     {
-        if (Input.GetKey(KeyCode.W))
-            transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
-        if (Input.GetKey(KeyCode.S))
-            transform.Translate(new Vector3(0, 0, -3 * Time.deltaTime));
-        if (Input.GetKey(KeyCode.A))
-            transform.Rotate(new Vector3(0, -100 * Time.deltaTime, 0));
-        if (Input.GetKey(KeyCode.D))
-            transform.Rotate(new Vector3(0, 100 * Time.deltaTime, 0));
+        if(_photonView.IsMine)
+        {
+            if (Input.GetKey(KeyCode.W))
+                transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+            if (Input.GetKey(KeyCode.S))
+                transform.Translate(new Vector3(0, 0, -3 * Time.deltaTime));
+            if (Input.GetKey(KeyCode.A))
+                transform.Rotate(new Vector3(0, -100 * Time.deltaTime, 0));
+            if (Input.GetKey(KeyCode.D))
+                transform.Rotate(new Vector3(0, 100 * Time.deltaTime, 0));
+        }
+        
     }
 
+    [PunRPC]
     public void Impulso()
     {
         rdb.AddRelativeForce(Vector3.forward * forçaImpulso * speed, ForceMode.Impulse);
     }
 
+    [PunRPC]
     public void GrowUp()
     {
         if (limiteGrowUp <= 3)
@@ -120,6 +127,7 @@ public class Move : MonoBehaviour
     {
         Instantiate(bomba, spawnBomb.transform.position, transform.rotation);
     }
+    [PunRPC]
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "chao")

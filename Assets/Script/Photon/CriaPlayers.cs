@@ -14,12 +14,12 @@ public class CriaPlayers : MonoBehaviour
         }
 
     }
-//    private void Update()
-//    {
-//        if (Input.GetKeyDown(KeyCode.Escape))
-//        {
-//            PhotonNetwork.LoadLevel(0);
-//        }
-//    }
+    //    private void Update()
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Escape))
+    //        {
+    //            PhotonNetwork.LoadLevel(0);
+    //        }
+    //    }
 
 }
