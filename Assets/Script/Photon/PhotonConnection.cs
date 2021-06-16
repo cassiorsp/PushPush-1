@@ -68,7 +68,6 @@ public class PhotonConnection : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Lobby");
-
     }
 
     public override void OnConnectedToMaster()
